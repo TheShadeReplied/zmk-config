@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include "cygnustp.dtsi"
+#include "corne_tp.dtsi"
 
 &default_transform {
     col-offset = <6>;
@@ -24,6 +24,7 @@
         , <&pro_micro 21 GPIO_ACTIVE_HIGH>
         ;
 };
+
 
 /*
  * PS/2 Mouse / Trackpoint - User Configuration
@@ -81,7 +82,6 @@
 // D9 for the reset circuit.
 #define MOUSE_PS2_PIN_SCL_PRO_MICRO <&pro_micro 1 GPIO_ACTIVE_HIGH>
 #define MOUSE_PS2_PIN_SDA_PRO_MICRO <&pro_micro 0 GPIO_ACTIVE_HIGH>
-
 
 // Configure the Power-On-Reset pin
 //
@@ -421,6 +421,24 @@
  *          doing.
  */
 
+
+// Firmware with alternative pins
+//
+// This can safely be removed. It's only used in the example zmk-config repo
+// to create an additional firmware with alternative PIN assignments.
+//
+// You can leave it or remove in your own zmk config. If you remove it, you
+// should also remove the entry in `zmk-config-example/build.yaml` that uses
+// it.
+#ifdef MOUSE_PS2_ALT_PINS
+    #undef MOUSE_PS2_PIN_SCL_PRO_MICRO
+    #undef MOUSE_PS2_PIN_SDA_PRO_MICRO
+    #undef MOUSE_PS2_PIN_SDA_PINCTRL
+
+    #define MOUSE_PS2_PIN_SCL_PRO_MICRO <&pro_micro 1 GPIO_ACTIVE_HIGH>
+    #define MOUSE_PS2_PIN_SDA_PRO_MICRO <&pro_micro 0 GPIO_ACTIVE_HIGH>
+    #define MOUSE_PS2_PIN_SDA_PINCTRL <NRF_PSEL(UART_RX, 0, 8)>
+#endif
 
 // This define can be used in the keymap file to check whether the device tree
 // configs in this file are present to void build errors on the side that does

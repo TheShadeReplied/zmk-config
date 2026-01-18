@@ -1,6 +1,6 @@
 file_format: "1"
 id: cygnustp
-name: CygnusTP
+name: Cygnus TP
 type: shield
 url: https://github.com/foostan/crkbd/
 requires: [pro_micro]
@@ -9,7 +9,6 @@ features:
   - keys
   - display
   - underglow
-  - studio
 siblings:
   - cygnustp_left
   - cygnustp_right
