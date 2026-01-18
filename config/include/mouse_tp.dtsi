@@ -177,7 +177,7 @@
       status = "okay";
     };
 
-    ifdef MOUSE_PS2_DRIVER_UART
+    #ifdef MOUSE_PS2_DRIVER_UART
 
       &uart0 {
         status = "okay";
