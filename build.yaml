@@ -19,9 +19,9 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: cygnustp_left
+    shield: corne_left
   - board: nice_nano_v2
-    shield: cygnustp_right
+    shield: corne_right
 
   # Settings Reset firmware
   # This will build a firmware that can wipe all settings from your
